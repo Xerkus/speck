@@ -1,1 +1,4 @@
-composer.lock
+vendor/
+config/development.config.php
+data/cache/*
+phpunit.xml

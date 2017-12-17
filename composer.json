@@ -1,100 +1,47 @@
 {
     "name": "speckcommerce",
-    "description": "Open Source E-Commerce Platform.  PHP, Zend Framework 2, ZF2 Modules",
-    "minimum-stability": "dev",
+    "description": "Open Source E-Commerce Platform",
+    "license": "BSD-2-Clause",
+    "keywords": [
+        "speckcommerce",
+        "e-commerce"
+    ],
     "authors": [
         {
             "name": "SpeckCommerce Authors",
             "email": "author@speckcommerce.org"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/zendframework/zf2"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/ZF-Commons/ZfcUser"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/ZF-Commons/ZfcBase"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckInstall"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckCart"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckCatalog"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckCatalogCart"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckAddress"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckImageUploader"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckMultisite"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckCheckout"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckRandomProducts"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckUserAddress"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/speckcommerce/SpeckOrder"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/atukai/AtPhpSettings"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/EvanDotPro/EdpSubLayout"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RWOverdijk/AssetManager"
-        }
-    ],
+    "support": {
+        "issues": "https://github.com/speckcommerce/speck/issues",
+        "source": "https://github.com/speckcommerce/speck",
+        "rss": "https://github.com/speckcommerce/speck/releases.atom"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "php"                                 : ">=5.4",
-        "zendframework/zendframework"         : "2.*",
-        "speckcommerce/speck-install"         : "dev-master",
-        "speckcommerce/speck-catalog"         : "dev-master",
-        "speckcommerce/speck-cart"            : "dev-master",
-        "speckcommerce/speck-catalog-cart"    : "dev-master",
-        "speckcommerce/speck-address"         : "dev-master",
-        "speckcommerce/speck-user-address"    : "dev-master",
-        "speckcommerce/speck-checkout"        : "dev-master",
-        "speckcommerce/speck-image-uploader"  : "dev-master",
-        "speckcommerce/speck-random-products" : "dev-master",
-        "speckcommerce/speck-order"           : "dev-master",
-        "speckcommerce/speck-multisite"       : "dev-master",
-        "evandotpro/edp-sub-layout"           : "dev-master",
-        "zf-commons/zfc-admin"                : "0.1.*",
-        "rwoverdijk/assetmanager"             : "dev-master",
-        "atukai/at-php-settings"              : "dev-master"
+        "php": "^7.1",
+        "zendframework/zend-mvc": "^3.1"
+    },
+    "require-dev": {
+        "zendframework/zend-coding-standard": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "serve": "php -S 0.0.0.0:8080 -t public/ index.php",
+        "test": "phpunit --colors=always"
     }
 }
