@@ -1,7 +1,11 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
+declare(strict_types=1);
+
+use Zend\ServiceManager\Factory\InvokableFactory;
+
+return [
+    'router' => [
+        'routes' => [
             //'default' => array(
             //    'type'    => 'Zend\Mvc\Router\Http\Segment',
             //    'options' => array(
@@ -16,59 +20,53 @@ return array(
             //        ),
             //    ),
             //),
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
+            'home' => [
+                'type' => 'Zend\Router\Http\Literal',
+                'options' => [
                     'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'index',
+                    'defaults' => [
+                        'controller' => Application\Controller\IndexController::class,
                         'action'     => 'index',
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'dependencies' => [
+        'factories' => [
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-        ),
-        'initializers' => array(
-            function ($instance, $sm) {
-                if ($instance instanceof Zend\Db\Adapter\AdapterAwareInterface) {
-                    return $instance->setDbAdapter($sm->get('Zend\Db\Adapter\Adapter'));
-                }
-            }
-        ),
-    ),
-    'translator' => array(
+        ],
+    ],
+    'translator' => [
         'locale' => 'en_US',
-        'translation_file_patterns' => array(
-            array(
+        'translation_file_patterns' => [
+            [
                 'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern' => '%s.mo',
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'index' => 'Application\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
+            ],
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Application\Controller\IndexController::class => InvokableFactory::class
+        ],
+    ],
+    'view_manager' => [
+        'base_path'                => '/',
+        'display_not_found_reason' => false,
+        'display_exceptions'       => false,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
+        'template_map' => [
             'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'index/index'   => __DIR__ . '/../view/index/index.phtml',
             'error/404'     => __DIR__ . '/../view/error/404.phtml',
             'error/index'   => __DIR__ . '/../view/error/index.phtml',
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
-    ),
-);
+        ],
+    ],
+];

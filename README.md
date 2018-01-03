@@ -2,35 +2,17 @@ SpeckCommerce
 =============
 Version 0.0.1
 
-Introduction
-------------
+## Note
 
-SpeckCommerce is an open source e-commerce platform written on Zend Framework 2.
-The most notable feature of SpeckCommerce is the incredibly flexible [modular
-design](https://github.com/speckcommerce/speck/wiki/Module-Separation-Strategy).
-The SpeckCommerce project was started by companies and developers who were
-unsatisfied with the overall quality of the
-[existing](http://www.magentocommerce.com/) [open](http://www.oscommerce.com/)
-[source](http://www.zen-cart.com/) [e-commerce](http://www.ecartcommerce.com/)
-[platforms](http://www.opencart.com/) written in PHP.  Leveraging our collective
-e-commerce knowledge and years of experience building and working with
-e-commerce platforms, we're developing what we hope to be the fastest, most
-flexible, and well-built e-commerce platform built in PHP.
+Currently Speckcommerce project is a development playground and is not meant to be used
+in production in parts or as a whole. No business domain experts were involved
+and no production considerations were taken into account for speckcommerce
+architecture.
 
-A secondary goal of SpeckCommerce is to be an exemplary model of the powerful
-new module system in Zend Framework 2.
+Project code is a subject to change. No support will be provided.
 
 Requirements
 ------------
-
-The dependencies for SpeckCommerce are set up as Git submodules so you should not have to mess with dependencies.
-
-* PHP 5.4+ (With short tags enabled)
-* [Zend Framework 2](https://github.com/zendframework/zf2) (latest master)
-* [ZfcBase](https://github.com/ZF-Commons/ZfcBase)
-* [ZfcUser](https://github.com/ZF-Commons/ZfcUser)
-* [SpeckCatalog](https://github.com/speckcommerce/SpeckCatalog)
-* [SpeckCart](https://github.com/speckcommerce/SpeckCart)
 
 
 Contributors
@@ -61,7 +43,7 @@ Installation
   * `cd speck && ../composer.phar install`
 * Launch the app from the browser, you will be propted for db info/etc
   * installation module is somewhat fragile, please add issues/pull requests at http://github.com/speckcommerce/SpeckInstall
- 
+
 Community
 ---------
 

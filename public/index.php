@@ -1,19 +1,23 @@
 <?php
-/**
- * This makes our life easier when dealing with paths. Everything is relative
- * to the application root now.
- */
-chdir(dirname(__DIR__));
 
-// Setup autoloading
-include 'init_autoloader.php';
+declare(strict_types=1);
 
-$config = include 'config/application.config.php';
-$host   = $_SERVER['HTTP_HOST'];
-$file   = 'config/' . $host . '.modules.php';
-if (file_exists($file)) {
-    $config = \Zend\Stdlib\ArrayUtils::merge($config, include $file);
+use Zend\Mvc\Application;
+use Zend\Stdlib\ArrayUtils;
+
+// Delegate static file requests back to the PHP built-in webserver
+if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
+    return false;
 }
-
-// Run the application!
-Zend\Mvc\Application::init($config)->run();
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+/**
+ * Self-called anonymous function that creates its own scope and keep the global namespace clean.
+ */
+(function () {
+    /** @var \Psr\Container\ContainerInterface $container */
+    $container = require 'config/container.php';
+    /** @var Zend\Mvc\Application $app */
+    $app = $container->get(Zend\Mvc\Application::class);
+    $app->run();
+})();
